@@ -41,9 +41,15 @@ public class Interface extends javax.swing.JDialog {
         setBounds(new Rectangle(50, 50, 500, 500));
         
         jLabel2 = new JLabel("Forma Normal Conjuntiva");
+        jLabel2.setBackground(new Color(255,255,255));
+        
         jLabel1 = new JLabel();
+        
         jLabel3 = new JLabel();
+        jLabel3.setBackground(new Color(255,255,255));
+        
         jLabel4 = new JLabel();
+        jLabel4.setBackground(new Color(255,255,255));
         
         jText1 = new JTextField();
         
@@ -53,22 +59,22 @@ public class Interface extends javax.swing.JDialog {
         
         jScrollPane1 = new JScrollPane();
         
-        jLabel2.setFont(new Font("Baskerville Old Face", 1, 26));
-        jLabel2.setForeground(new Color(0,0,0));
+        jLabel2.setFont(new Font("Sans Serif", 1, 30));
+        jLabel2.setForeground(new Color(255,0,0));
         getContentPane().add(jLabel2,
-                new AbsoluteConstraints(10,5, 440, 50));
+                new AbsoluteConstraints(100,5, 440, 50));
         
         jLabel3.setText("Digite el número de variables booleanas");
-        jLabel3.setFont(new Font("Baskerville Old Face", 1, 16));
-        jLabel3.setForeground(new Color(0,0,0));
+        jLabel3.setFont(new Font("Sans Serif", 1, 20));
+        jLabel3.setForeground(new Color(255,0,0));
         getContentPane().add(jLabel3,
-                new AbsoluteConstraints(10,60, 340, 50));
+                new AbsoluteConstraints(10,60, 400, 50));
         
-        jText1.setFont(new Font("Baskerville Old Face", 1, 16));
+        jText1.setFont(new Font("Sans Serif", 1, 16));
         getContentPane().add(jText1,
                 new AbsoluteConstraints(10,110, 50, 50));
         
-        jButton1.setFont(new Font("Baskerville Old Face", 1, 16));
+        jButton1.setFont(new Font("Sans Serif", 1, 16));
         getContentPane().add(jButton1,
                 new AbsoluteConstraints(210,110, 200, 50));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -78,17 +84,16 @@ public class Interface extends javax.swing.JDialog {
         });
         
         jLabel4.setText("Visualice una FNC aleatoria");
-        jLabel4.setFont(new Font("Baskerville Old Face", 1, 16));
-        jLabel4.setForeground(new Color(0,0,0));
+        jLabel4.setFont(new Font("Sans Serif", 1, 16));
+        jLabel4.setForeground(new Color(255,0,0));
         getContentPane().add(jLabel4,
                 new AbsoluteConstraints(10,170, 240, 50));
         
-        jTable1.setFont(new Font("Baskerville Old Face", 1, 26));
+        jTable1.setFont(new Font("Sans Serif", 1, 26));
         jTable1.setForeground(new Color(0,0,0));
-        jTable1.setAutoResizeMode(0);
         jScrollPane1.setViewportView( jTable1 );
         getContentPane().add(jScrollPane1,
-                new AbsoluteConstraints(10,230, 400, 200));
+                new AbsoluteConstraints(50,230, 400, 200));
         
         
         jLabel1.setIcon(new ImageIcon(Interface.class.getResource("/fnc/Images/matematicas-discretas-demostraciones.jpg"))); // NOI18N
@@ -119,21 +124,29 @@ public class Interface extends javax.swing.JDialog {
                     return false;//This causes all cells to be not editable
                 }
         };
-        for( int i = 0; i < value; i ++)
+        for( int i = 0; i < value; i ++){
             modelo.addColumn(String.valueOf(i));
+        }
+        
+        jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
         
         int pos = 0;
         for( Disjunction dis : sc.getArr()){
             String[] arr = new String[value];
             Boolean[] bin = dis.binary_expression;
             for(int i = 0; i < value; i ++){
-                arr[i] = ( (bin[i]) ? "x\u0305" : "x" ) + String.valueOf(i);
+                arr[i] =( ( i == 0 ) ? "( " : "+ " )+
+                        ( (bin[i]) ? "X\u0305" : "X" ) + String.valueOf(i)+
+                        ( (i == value - 1) ? " )" : "" );
             }
             modelo.addRow( arr );
         }
         
         jTable1.setModel(modelo);
+        
         jTable1.setRowHeight(50);
+        
     }
 
     /**
