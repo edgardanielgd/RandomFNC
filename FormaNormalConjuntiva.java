@@ -71,15 +71,7 @@ class SingleConjuntion{
     }
     public ArrayList<Disjunction> getArr(){ return this.arr; }
 }
-/**
- *
- * @author PERSONAL
- */
 public class FormaNormalConjuntiva {
-
-    /**
-     * @param args the command line arguments
-     */
     public static SingleConjuntion getRandomFNC( int size ){
         ArrayList<Disjunction> arr = new ArrayList<>();
         
@@ -97,18 +89,45 @@ public class FormaNormalConjuntiva {
         SingleConjuntion sc = new SingleConjuntion(arr);
         return sc;
     }
+    
     public static void main(String[] args) throws IOException{
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        String line = bf.readLine();
+        
+        
+        System.out.println("=====================================");
+        System.out.println( "FORMA NORMAL CONJUNTIVA ALEATORIA" );
+        System.out.println( "Matemáticas discretas II" );
+        System.out.println( "Jhonatan Steven Rodriguez Ibanez" );
+        System.out.println( "Edgar Daniel Gonzalez Diaz" );
+        System.out.println("=====================================");
+        System.out.println("\n");
+        System.out.println("Digite -1 para salir del programa\n");
+        
         int data = 0;
-        try{
-            data = Integer.parseInt(line);
-        }catch(Exception e){
-            System.out.println("Digita valores correctos");
-            return;
-        }
-        SingleConjuntion sc = getRandomFNC( data );
-        System.out.println(sc);
+        
+        do{
+            String line = bf.readLine();
+            try{
+                data = Integer.parseInt(line);
+            }catch(Exception e){
+                System.out.println("Digita valores correctos");
+                continue;
+            }
+
+            if( data < 0){
+                if( data == -1){
+                    System.out.println("Hasta luego!");
+                    continue;
+                }else{
+                    System.out.println("Digita valores correctos");
+                    continue;
+                }
+            }else{
+                SingleConjuntion sc = getRandomFNC( data );
+                System.out.println(sc); 
+                
+            }
+        }while( data != -1);
         bf.close();
     }
     
