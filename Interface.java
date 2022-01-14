@@ -15,9 +15,9 @@ public class Interface extends javax.swing.JDialog {
         
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new AbsoluteLayout()); 
-        getContentPane().setBackground(new java.awt.Color(55,197, 211));
+        getContentPane().setBackground(new java.awt.Color(0, 0, 0));
         
-        setBounds(new Rectangle(50, 50, 500, 500));
+        setBounds(new Rectangle(50, 50, 500, 550));
         
         jLabel2 = new JLabel("Forma Normal Conjuntiva");
         jLabel2.setBackground(new Color(255,255,255));
@@ -33,6 +33,13 @@ public class Interface extends javax.swing.JDialog {
         jLabel4.setBackground(new Color(255,255,255));
         jLabel4.setOpaque(true);
         
+        jLabel5 = new JLabel();
+        jLabel5.setBackground(new Color(255,255,255));
+        jLabel5.setOpaque(true);
+        
+        jLabel6 = new JLabel();
+        jLabel6.setBackground(new Color(255,255,255));
+        jLabel6.setOpaque(true);
         jText1 = new JTextField();
         
         jButton1 = new JButton("Aceptar");
@@ -80,13 +87,24 @@ public class Interface extends javax.swing.JDialog {
         
         jButton2.setFont(new Font("Sans Serif", 1, 16));
         getContentPane().add(jButton2,
-                new AbsoluteConstraints(50,450, 200, 50));
+                new AbsoluteConstraints(10,450, 200, 50));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed2(evt);
             }
         });
         
+        jLabel5.setText( "Jhonatan Steven Rodriguez Ibanez" );
+        jLabel5.setFont(new Font("Sans Serif", 1, 16));
+        jLabel5.setForeground(new Color(255,0,0));
+        getContentPane().add(jLabel5,
+                new AbsoluteConstraints(220,450, 280, 50));
+        
+        jLabel6.setText( "Edgar Daniel González Díaz" );
+        jLabel6.setFont(new Font("Sans Serif", 1, 16));
+        jLabel6.setForeground(new Color(255,0,0));
+        getContentPane().add(jLabel6,
+                new AbsoluteConstraints(220,500, 280, 50));
         jLabel1.setIcon(new ImageIcon(Interface.class.getResource("/fnc/Images/13-1.jpg"))); // NOI18N
         getContentPane().add(jLabel1,
                 new AbsoluteConstraints(0,0, 500, 500));
@@ -154,6 +172,8 @@ public class Interface extends javax.swing.JDialog {
     private JLabel jLabel2;
     private JLabel jLabel3;
     private JLabel jLabel4;
+    private JLabel jLabel5;
+    private JLabel jLabel6;
     
     private JTextField jText1;
     
